@@ -1,0 +1,24 @@
+<h1>Ajouter un professionnel</h1>
+  <div style="width: 500px; margin: auto;">
+    <div class="submit-form">
+      <div *ngIf="!submitted">
+        <div class="form-group">
+          <label for="firstName">Name</label>
+          <input
+            type="text"
+            id="firstName"
+            required
+            [(ngModel)]="professional.firstName"
+            name="firstName"
+          />
+        </div>
+
+        <button (click)="createProfessional()" class="btn btn-success">Create</button>
+      </div>
+
+      <div *ngIf="submitted">
+        <h3>You successfully created a product!</h3>
+        <button class="btn btn-success" (click)="newProfessional()">New..</button>
+      </div>
+    </div>
+  </div>

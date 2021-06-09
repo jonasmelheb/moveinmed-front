@@ -1,0 +1,10 @@
+<p>professional-list works!</p>
+<h1>Liste des professionnels</h1>
+<div *ngFor="let professional of professionals" [routerLink]="['professionals', professional.id]">
+    <ul>
+        <li>{{ professional.firstName + " - " + professional.lastName }}</li>
+    </ul>
+</div>
+<button>
+    <a href="/add">ADD</a>
+</button>

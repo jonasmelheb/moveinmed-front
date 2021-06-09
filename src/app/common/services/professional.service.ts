@@ -17,29 +17,21 @@ export class ProfessionalService {
   }
 
   list(): Observable<Professional[]> {
-    return this.http.get<Professional[]>(environment.apiBaseUrl).pipe(
-      map((res: Professional[]) => {
-        return res;
-      })
-    );
+    return this.http.get<Professional[]>(environment.apiBaseUrl);
   }
 
-  show(id: number): Observable<any> {
-    return this.http.get<Professional>(environment.apiBaseUrl + '/' + id).pipe(
-      map((res: Professional) => {
-        return res;
-      })
-    );
+  show(id: number): Observable<Professional> {
+    return this.http.get<Professional>(environment.apiBaseUrl + '/' + id);
   }
-  getById(id: number){
+  getById(id: number): Observable<Professional>{
     return this.http.get<Professional>(environment.apiBaseUrl + '/' + id);
   }
 
-  update(params: any, id: number) {
-    return this.http.put(environment.apiBaseUrl + '/' + id, params);
+  update(params: any, id: number): Observable<Professional>{
+    return this.http.put<Professional>(environment.apiBaseUrl + '/' + id, params);
   }
 
-  delete(id: number) {
-    return this.http.delete(environment.apiBaseUrl + '/' + id);
+  delete(id: number): Observable<null>{
+    return this.http.delete<null>(environment.apiBaseUrl + '/' + id);
   }
 }

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormGroup, Validators } from '@angular/forms';
 import {ActivatedRoute, Router } from '@angular/router';
 import { first } from 'rxjs/operators';
+import { Profession } from 'src/app/common/interface/profession';
 import { Professional } from 'src/app/common/interface/professional';
 import { ProfessionalService } from 'src/app/common/services/professional.service';
 
@@ -16,6 +17,7 @@ export class AddProfessionalComponent implements OnInit {
   isAddProfessional!: boolean;
   loading = false;
   submitted = false;
+  professions = Profession;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -39,7 +41,6 @@ export class AddProfessionalComponent implements OnInit {
 
     if (!this.isAddProfessional) {
       this.professionalService.getById(this.id)
-        .pipe(first())
         .subscribe(x => this.form.patchValue(x));
     }
   }
@@ -57,7 +58,6 @@ export class AddProfessionalComponent implements OnInit {
 
   private createProfessional() {
     this.professionalService.create(this.form.value)
-      .pipe(first())
       .subscribe(() => {
         this.router.navigate(["/"])
       })
@@ -66,7 +66,6 @@ export class AddProfessionalComponent implements OnInit {
 
   private updateProfessional() {
     this.professionalService.update(this.form.value, this.id)
-      .pipe(first())
       .subscribe(() => {
         this.router.navigate(['professionals/' + this.id])
       })

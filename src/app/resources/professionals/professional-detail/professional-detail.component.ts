@@ -27,7 +27,6 @@ export class ProfessionalDetailComponent implements OnInit {
 
   delete(id: number): void {
     this.professionalService.delete(id)
-      .pipe()
       .subscribe(() => {
         this.router.navigate(["/"])
       })

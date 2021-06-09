@@ -1,11 +1,17 @@
-<p>professional-detail works!</p>
-
-<div>
-    {{ professional?.firstName }} <br>
-    {{ professional?.lastName }} <br>
-    {{ professional?.address }}<br>
-    {{ professional?.phoneNumber }}<br>
+<h2 class="text-center">Les détail d'un professionnels</h2>
+<div class="feature col d-flex justify-content-center">
+  <div class="card" style="width: 35rem;">
+    <ul class="list-group list-group-flush">
+      <li class="list-group-item">{{ professional?.firstName }}</li>
+      <li class="list-group-item">{{ professional?.lastName }}</li>
+      <li class="list-group-item">{{ professional?.profession }}</li>
+      <li class="list-group-item">{{ professional?.phoneNumber }}</li>
+      <li class="list-group-item">{{ professional?.email }}</li>
+      <li class="list-group-item">{{ professional?.address }}</li>
+    </ul>
+  </div>
 </div>
-
-<a routerLink="/edit/{{professional?.id}}" class="btn btn-link">Update</a>
-<a (click)="delete(professional.id)" class="btn btn-link">Delete</a>
+<div class="d-flex justify-content-center my-3">
+  <button mat-raised-button color="primary" routerLink="/edit/{{professional?.id}}" class="mx-2">Modifier</button>
+  <button mat-raised-button color="warn" (click)="delete(professional.id)">Supprimer</button>
+</div>

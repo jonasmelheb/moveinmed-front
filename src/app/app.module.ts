@@ -7,12 +7,13 @@ import { ProfessionalDetailComponent } from './resources/professionals/professio
 import { RouterModule } from "@angular/router";
 import { appRoutes } from "./app.routes";
 import { HttpClientModule } from "@angular/common/http";
-import { AddProfessionalComponent } from './resources/professionals/add-professional/add-professional.component';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
-
 import { ReactiveFormsModule } from '@angular/forms';
 import { NavbarComponent } from './partials/header/navbar/navbar.component';
-import {MatButtonModule} from '@angular/material/button';
+import { AddProfessionalComponent } from './resources/professionals/add-professional/add-professional.component';
+import { MatSliderModule } from '@angular/material/slider';
+import { MatListModule } from '@angular/material/list';
+import { MatButtonModule } from '@angular/material/button';
 
 @NgModule({
   declarations: [
@@ -27,8 +28,10 @@ import {MatButtonModule} from '@angular/material/button';
     RouterModule.forRoot(appRoutes),
     HttpClientModule,
     NoopAnimationsModule,
-    MatButtonModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatSliderModule,
+    MatListModule,
+    MatButtonModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Professional } from "../../../common/interface/professional";
 import { ProfessionalService } from "../../../common/services/professional.service";
 
@@ -12,7 +13,8 @@ export class ProfessionalListComponent implements OnInit {
   public professionals: Professional[] = [];
 
   constructor(
-    private professionalService: ProfessionalService
+    private professionalService: ProfessionalService,
+    private router: Router
   ) { }
 
   ngOnInit(): void {
@@ -20,5 +22,12 @@ export class ProfessionalListComponent implements OnInit {
       this.professionals = res;
     })
   }
+  delete(id: number): void {
+    this.professionalService.delete(id)
+      .subscribe(() => {
+        this.router.navigate(["/"])
+      })
+  }
+
 
 }

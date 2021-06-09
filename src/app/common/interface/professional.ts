@@ -1,3 +1,4 @@
+import { Profession } from './profession';
 export interface Professional {
   id: number
   firstName: string
@@ -5,6 +6,6 @@ export interface Professional {
   email: string
   phoneNumber: string
   address: string
-  profession: string
+  profession: Profession
   active: number
 }

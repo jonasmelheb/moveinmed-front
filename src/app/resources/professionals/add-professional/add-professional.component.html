@@ -1,24 +1,62 @@
 <h1>Ajouter un professionnel</h1>
-  <div style="width: 500px; margin: auto;">
-    <div class="submit-form">
-      <div *ngIf="!submitted">
-        <div class="form-group">
-          <label for="firstName">Name</label>
-          <input
-            type="text"
-            id="firstName"
-            required
-            [(ngModel)]="professional.firstName"
-            name="firstName"
-          />
-        </div>
 
-        <button (click)="createProfessional()" class="btn btn-success">Create</button>
+<form [formGroup]="form" (ngSubmit)="onSubmit()">
+  <div class="form-row">
+    <div class="form-group col-5">
+      <label>Prénom</label>
+      <input type="text" formControlName="firstName" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.firstName.errors }" />
+      <div *ngIf="submitted && f.firstName.errors" class="invalid-feedback">
+        <div *ngIf="f.firstName.errors.required">First Name is required</div>
       </div>
-
-      <div *ngIf="submitted">
-        <h3>You successfully created a product!</h3>
-        <button class="btn btn-success" (click)="newProfessional()">New..</button>
+    </div>
+    <div class="form-group col-5">
+      <label>Nom</label>
+      <input type="text" formControlName="lastName" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.lastName.errors }" />
+      <div *ngIf="submitted && f.lastName.errors" class="invalid-feedback">
+        <div *ngIf="f.lastName.errors.required">Last Name is required</div>
       </div>
     </div>
   </div>
+  <div class="form-row">
+    <div class="form-group col-7">
+      <label>Email</label>
+      <input type="text" formControlName="email" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.email.errors }" />
+      <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
+        <div *ngIf="f.email.errors.required">Email is required</div>
+        <div *ngIf="f.email.errors.email">Email must be a valid email address</div>
+      </div>
+    </div>
+    <div class="form-group col-7">
+      <label>Téléphone</label>
+      <input type="text" formControlName="phoneNumber" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.phoneNumber.errors }" />
+      <div *ngIf="submitted && f.phoneNumber.errors" class="invalid-feedback">
+        <div *ngIf="f.phoneNumber.errors.required">phoneNumber is required</div>
+        <div *ngIf="f.phoneNumber.errors.phone">Email must be a valid email address</div>
+      </div>
+    </div>
+    <div class="form-group col-7">
+      <label>Adresse</label>
+      <input type="text" formControlName="address" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.address.errors }" />
+      <div *ngIf="submitted && f.address.errors" class="invalid-feedback">
+        <div *ngIf="f.address.errors.required">phoneNumber is required</div>
+      </div>
+    </div>
+    <div class="form-group col">
+      <label>Profession</label>
+      <select formControlName="profession" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.profession.errors }">
+        <option value=""></option>
+        <option value="MEDECIN_GENARALISTE">MEDECIN_GENARALISTE</option>
+      </select>
+      <div *ngIf="submitted && f.profession.errors" class="invalid-feedback">
+        <div *ngIf="f.profession.errors.required">Role is required</div>
+      </div>
+    </div>
+  </div>
+  <div class="form-group">
+    <button [disabled]="loading" class="btn btn-primary">
+      <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
+      Save
+    </button>
+    <a routerLink="/users" class="btn btn-link">Cancel</a>
+  </div>
+</form>

@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import {FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { first } from 'rxjs/operators';
 import { Professional } from 'src/app/common/interface/professional';
 import { ProfessionalService } from 'src/app/common/services/professional.service';
 
@@ -9,58 +11,44 @@ import { ProfessionalService } from 'src/app/common/services/professional.servic
   styleUrls: ['./add-professional.component.css']
 })
 export class AddProfessionalComponent implements OnInit {
-  professional = {
-    id: '',
-    firstName: '',
-    lastName: '',
-    email: '',
-    phoneNumber: '',
-    address: '',
-    profession: '',
-  }
+  form!: FormGroup;
+  loading = false;
   submitted = false;
 
   constructor(
+    private formBuilder: FormBuilder,
+    private router: Router,
     private professionalService: ProfessionalService
   ) { }
 
   ngOnInit(): void {
+    this.form = this.formBuilder.group({
+      firstName: ['', Validators.required],
+      lastName: ['', Validators.required],
+      email: ['', Validators.required],
+      phoneNumber: ['', Validators.required],
+      address: ['', Validators.required],
+      profession: ['', Validators.required],
+    })
   }
 
-  createProfessional(): void {
-    // @ts-ignore
-    const data = new Professional (
-      this.professional.firstName,
-      this.professional.lastName,
-      this.professional.email,
-      this.professional.phoneNumber,
-      this.professional.address,
-      this.professional.profession
-    );
+  get f() {return this.form.controls}
 
-    this.professionalService.create(data).subscribe(
-      response => {
-        console.log(response);
-        this.submitted = true
-      },
-      error => {
-        console.log(error)
-      }
-    )
-  }
-
-  newProfessional(): void {
-    this.submitted = false;
-    this.professional = {
-      id: '',
-      firstName: '',
-      lastName: '',
-      email: '',
-      phoneNumber: '',
-      address: '',
-      profession: ''
+  onSubmit() {
+    this.submitted = true;
+    if (this.form.invalid) {
+      return;
     }
+    this.loading = true;
+    this.createProfessional();
   }
 
-
+  private createProfessional() {
+    this.professionalService.create(this.form.value)
+      .pipe(first())
+      .subscribe(() => {
+        this.router.navigate(["/"])
+      })
+      .add(() => this.loading = false);
+  }
 }

@@ -12,8 +12,8 @@ export class ProfessionalService {
 
   constructor(private http: HttpClient) { }
 
-  create(data: Professional): Observable<Professional> {
-    return this.http.post<Professional>(environment.apiBaseUrl, data);
+  create(params: any) {
+    return this.http.post(environment.apiBaseUrl, params);
   }
 
   list(): Observable<Professional[]> {

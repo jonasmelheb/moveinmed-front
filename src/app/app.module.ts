@@ -10,6 +10,7 @@ import { HttpClientModule } from "@angular/common/http";
 import { AddProfessionalComponent } from './resources/professionals/add-professional/add-professional.component';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 
+import { ReactiveFormsModule } from '@angular/forms';
 import { NavbarComponent } from './partials/header/navbar/navbar.component';
 import {MatButtonModule} from '@angular/material/button';
 
@@ -26,7 +27,8 @@ import {MatButtonModule} from '@angular/material/button';
     RouterModule.forRoot(appRoutes),
     HttpClientModule,
     NoopAnimationsModule,
-    MatButtonModule
+    MatButtonModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

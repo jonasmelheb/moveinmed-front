@@ -15,5 +15,14 @@ export const appRoutes: Routes = [
   {
     path: 'add',
     component: AddProfessionalComponent
+  },
+  {
+    path: 'edit/:id',
+    component: AddProfessionalComponent
+  }
+  ,
+  {
+    path: 'delete/:id',
+    component: AddProfessionalComponent
   }
 ]

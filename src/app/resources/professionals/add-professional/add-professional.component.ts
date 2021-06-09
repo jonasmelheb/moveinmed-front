@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
+import {ActivatedRoute, Router } from '@angular/router';
 import { first } from 'rxjs/operators';
 import { Professional } from 'src/app/common/interface/professional';
 import { ProfessionalService } from 'src/app/common/services/professional.service';
@@ -12,16 +12,22 @@ import { ProfessionalService } from 'src/app/common/services/professional.servic
 })
 export class AddProfessionalComponent implements OnInit {
   form!: FormGroup;
+  id!: number;
+  isAddProfessional!: boolean;
   loading = false;
   submitted = false;
 
   constructor(
     private formBuilder: FormBuilder,
     private router: Router,
+    private activateRoute: ActivatedRoute,
     private professionalService: ProfessionalService
   ) { }
 
   ngOnInit(): void {
+    this.id = this.activateRoute.snapshot.params['id'];
+    this.isAddProfessional = !this.id;
+
     this.form = this.formBuilder.group({
       firstName: ['', Validators.required],
       lastName: ['', Validators.required],
@@ -30,6 +36,12 @@ export class AddProfessionalComponent implements OnInit {
       address: ['', Validators.required],
       profession: ['', Validators.required],
     })
+
+    if (!this.isAddProfessional) {
+      this.professionalService.getById(this.id)
+        .pipe(first())
+        .subscribe(x => this.form.patchValue(x));
+    }
   }
 
   get f() {return this.form.controls}
@@ -40,7 +52,7 @@ export class AddProfessionalComponent implements OnInit {
       return;
     }
     this.loading = true;
-    this.createProfessional();
+    this.isAddProfessional ? this.createProfessional() : this.updateProfessional();
   }
 
   private createProfessional() {
@@ -48,6 +60,15 @@ export class AddProfessionalComponent implements OnInit {
       .pipe(first())
       .subscribe(() => {
         this.router.navigate(["/"])
+      })
+      .add(() => this.loading = false);
+  }
+
+  private updateProfessional() {
+    this.professionalService.update(this.form.value, this.id)
+      .pipe(first())
+      .subscribe(() => {
+        this.router.navigate(['professionals/' + this.id])
       })
       .add(() => this.loading = false);
   }

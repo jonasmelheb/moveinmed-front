@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Professional } from "../../../common/interface/professional";
 import { ProfessionalService } from "../../../common/services/professional.service";
-import { ActivatedRoute } from "@angular/router";
+import { ActivatedRoute, Router } from "@angular/router";
 
 @Component({
   selector: 'app-professional-detail',
@@ -13,7 +13,8 @@ export class ProfessionalDetailComponent implements OnInit {
 
   constructor(
     private professionalService: ProfessionalService,
-    private activateRoute: ActivatedRoute
+    private activateRoute: ActivatedRoute,
+    private router: Router
   ) { }
 
   ngOnInit(): void {
@@ -22,6 +23,14 @@ export class ProfessionalDetailComponent implements OnInit {
     this.professionalService.show(id).subscribe((res: Professional) => {
       this.professional = res;
     })
+  }
+
+  delete(id: number): void {
+    this.professionalService.delete(id)
+      .pipe()
+      .subscribe(() => {
+        this.router.navigate(["/"])
+      })
   }
 
 }

@@ -1,8 +1,11 @@
 <p>professional-detail works!</p>
 
 <div>
-    {{ professional.firstName }} <br>
-    {{ professional.lastName }} <br>
-    {{ professional.address }}<br>
-    {{ professional.phoneNumber }}<br>
+    {{ professional?.firstName }} <br>
+    {{ professional?.lastName }} <br>
+    {{ professional?.address }}<br>
+    {{ professional?.phoneNumber }}<br>
 </div>
+
+<a routerLink="/edit/{{professional?.id}}" class="btn btn-link">Update</a>
+<a (click)="delete(professional.id)" class="btn btn-link">Delete</a>

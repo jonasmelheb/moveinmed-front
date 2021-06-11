@@ -1,0 +1,28 @@
+<h1 class="text-center">Liste de recherche</h1>
+<div class="container">
+  <table class="table table-dark">
+    <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Prénom</th>
+      <th scope="col">Nom</th>
+      <th scope="col">E-mail</th>
+      <th scope="col">Téléphone</th>
+      <th scope="col">Action</th>
+    </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let professional of professionals" [routerLink]="['professionals', professional.id]">
+        <th scope="row">{{ professional.id }}</th>
+        <td>{{ professional.firstName }}</td>
+        <td>{{ professional.lastName }}</td>
+        <td>{{ professional.email }}</td>
+        <td>{{ professional.phoneNumber }}</td>
+        <td>
+          <button mat-raised-button color="primary" routerLink="/edit/{{professional?.id}}" class="mx-2">Modifier</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+</div>

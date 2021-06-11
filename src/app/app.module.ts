@@ -8,12 +8,13 @@ import { RouterModule } from "@angular/router";
 import { appRoutes } from "./app.routes";
 import { HttpClientModule } from "@angular/common/http";
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
-import { ReactiveFormsModule } from '@angular/forms';
+import {FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NavbarComponent } from './partials/header/navbar/navbar.component';
 import { AddProfessionalComponent } from './resources/professionals/add-professional/add-professional.component';
 import { MatSliderModule } from '@angular/material/slider';
 import { MatListModule } from '@angular/material/list';
 import { MatButtonModule } from '@angular/material/button';
+import { SearchResultComponent } from './resources/professionals/search-result/search-result.component';
 
 @NgModule({
   declarations: [
@@ -22,6 +23,7 @@ import { MatButtonModule } from '@angular/material/button';
     ProfessionalDetailComponent,
     AddProfessionalComponent,
     NavbarComponent,
+    SearchResultComponent,
   ],
   imports: [
     BrowserModule,
@@ -31,7 +33,8 @@ import { MatButtonModule } from '@angular/material/button';
     ReactiveFormsModule,
     MatSliderModule,
     MatListModule,
-    MatButtonModule
+    MatButtonModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

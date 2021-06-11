@@ -33,7 +33,6 @@
         <input type="text" formControlName="phoneNumber" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.phoneNumber.errors }" />
         <div *ngIf="submitted && f.phoneNumber.errors" class="invalid-feedback">
           <div *ngIf="f.phoneNumber.errors.required">phoneNumber is required</div>
-          <div *ngIf="f.phoneNumber.errors.phone">Email must be a valid email address</div>
         </div>
       </div>
 

@@ -27,6 +27,10 @@ export class ProfessionalService {
     return this.http.get<Professional>(environment.apiBaseUrl + '/' + id);
   }
 
+  search(searchField: string): Observable<Professional[]> {
+    return this.http.get<Professional[]>(environment.apiBaseUrl + '/search/?name=' + searchField);
+  }
+
   update(params: any, id: number): Observable<Professional>{
     return this.http.put<Professional>(environment.apiBaseUrl + '/' + id, params);
   }

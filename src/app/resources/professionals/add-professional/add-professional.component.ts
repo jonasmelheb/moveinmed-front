@@ -33,9 +33,9 @@ export class AddProfessionalComponent implements OnInit {
     this.form = this.formBuilder.group({
       firstName: ['', Validators.required],
       lastName: ['', Validators.required],
-      email: ['', Validators.required],
-      phoneNumber: ['', Validators.required],
-      address: ['', Validators.required],
+      email: ['', [Validators.required, Validators.email]],
+      phoneNumber: ['', [Validators.required ,Validators.pattern('^$|[0-9]{10}')]],
+      address: ['', [Validators.required]],
       profession: ['', Validators.required],
     })
 

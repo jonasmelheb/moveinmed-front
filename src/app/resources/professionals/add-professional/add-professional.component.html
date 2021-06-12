@@ -21,7 +21,7 @@
       </div>
       <div class="col-sm-12">
         <label>Email</label>
-        <input type="text" formControlName="email" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.email.errors }" />
+        <input type="email" formControlName="email" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.email.errors }" />
         <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
           <div *ngIf="f.email.errors.required">Email is required</div>
           <div *ngIf="f.email.errors.email">Email must be a valid email address</div>
@@ -30,9 +30,10 @@
 
       <div class="col-sm-12">
         <label>Téléphone</label>
-        <input type="text" formControlName="phoneNumber" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.phoneNumber.errors }" />
+        <input type="tel" formControlName="phoneNumber" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.phoneNumber.errors }" />
         <div *ngIf="submitted && f.phoneNumber.errors" class="invalid-feedback">
           <div *ngIf="f.phoneNumber.errors.required">phoneNumber is required</div>
+          <div *ngIf="f.phoneNumber.errors.pattern">phoneNumber must be a valid phone number</div>
         </div>
       </div>
 

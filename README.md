@@ -1,27 +1,68 @@
 # MoveinmedFront
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 12.0.3.
+MoveInMedFront est une application front-end pour [L'API REST](https://github.com/jonasmelheb/moveinmed.git)  pour gérer les professionnels.
 
-## Development server
+## Environnement de développement
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+### Pré-requis
 
-## Code scaffolding
+* Angular 12
+* Angular CLI
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+### Installation
 
-## Build
+```bash
+# Cloner le repository
+git clone https://github.com/jonasmelheb/moveinmed.git
+# Entrer dans le directory
+cd moveinmed/
+# Installer les dépendance
+npm i 
+# Lancer l'application
+ng serve
+```
+* Le projet est lancé sur http://localhost:4200/
+### Structure du projet
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+```
+├── package.json
+├── package-lock.json
+├── README.md
+├── src
+│   ├── app
+│   │   ├── app.component.css
+│   │   ├── app.component.html
+│   │   ├── app.component.ts
+│   │   ├── app.module.ts
+│   │   ├── app.routes.ts
+│   │   ├── recources
+│   │   │   └── professionals
+│   │   │       ├── add-professional
+│   │   │       ├── professional-list
+│   │   │       ├── professional-detail
+│   │   │       └── search-result
+│   │   │       
+│   │   ├── partials
+│   │   │   └── hearder
+│   │   │       └── navbar
+│   │   └── common
+│   │       ├─── interface
+│   │       └──  services
+│   ├── favicon.ico
+│   ├── index.html
+│   ├── main.ts
+│   ├── polyfills.ts
+│   └── styles.css
+```
 
-## Running unit tests
+### Liste des professionnels
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+![img_1.png](img_1.png)
 
-## Running end-to-end tests
+### Ajouter un professionnel
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+![img_2.png](img_2.png)
 
-## Further help
+### Les détails d'un professionnel
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+![img_3.png](img_3.png)

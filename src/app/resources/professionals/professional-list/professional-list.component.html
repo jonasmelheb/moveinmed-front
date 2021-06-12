@@ -8,7 +8,7 @@
       <th scope="col">Prénom</th>
       <th scope="col">Nom</th>
       <th scope="col">E-mail</th>
-      <th scope="col">Téléphone</th>
+      <th scope="col">Profession</th>
       <th scope="col">Action</th>
     </tr>
     </thead>
@@ -18,7 +18,7 @@
       <td>{{ professional.firstName }}</td>
       <td>{{ professional.lastName }}</td>
       <td>{{ professional.email }}</td>
-      <td>{{ professional.phoneNumber }}</td>
+      <td>{{ professional.profession }}</td>
       <td>
         <button mat-raised-button color="primary" routerLink="/edit/{{professional?.id}}" class="mx-2">Modifier</button>
         <button mat-raised-button color="warn" (click)="delete(professional.id)">Supprimer</button>

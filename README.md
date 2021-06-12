@@ -13,9 +13,9 @@ MoveInMedFront est une application front-end pour [L'API REST](https://github.co
 
 ```bash
 # Cloner le repository
-git clone https://github.com/jonasmelheb/moveinmed.git
+git clone https://github.com/jonasmelheb/moveinmed-front.git
 # Entrer dans le directory
-cd moveinmed/
+cd moveinmed-front/
 # Installer les dépendance
 npm i 
 # Lancer l'application
